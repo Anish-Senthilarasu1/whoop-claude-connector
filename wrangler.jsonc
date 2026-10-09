@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "whoop-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [{ "name": "MCP_OBJECT", "class_name": "WhoopMCP" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["WhoopMCP"] }],
+  "kv_namespaces": [
+    // Holds OAuth grants for Claude + the single WHOOP token pair (key "whoop:tokens").
+    { "binding": "OAUTH_KV", "id": "REPLACE_WITH_YOUR_KV_NAMESPACE_ID" }
+  ],
+  "observability": { "enabled": true }
+}
